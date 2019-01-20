@@ -5,6 +5,10 @@ from django.db.models import Q
 #from django.template import loader
 from .models import Country, PGAG, Operation, Evidence, Target, MemberCharacteristic, GovernmentLink, Support, Purpose
 
+import csv
+import colorsys
+from datetime import datetime
+
 def float2dec(color):
     return int(color*255)
 
@@ -40,7 +44,7 @@ def pgag_basic(request): #??
 
     pgags = PGAG.objects.all().order_by("country")
 
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=pgag_basic.csv'
 
     # header
@@ -61,7 +65,7 @@ def year_active(request): #??
     # if not request.user.is_authenticated():
     #     return render_to_response('login_error.html')
 
-    years = range(1981, 2008)
+    years = range(1981, 2014) # was 2008 before
     data = {}
     for y in years:
         data[str(y)] = 0
@@ -71,7 +75,7 @@ def year_active(request): #??
         y = o.year
         data[y] = data[y] + 1    # makes some assumptions...
     
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=year_active.csv'
 
     # header
@@ -93,7 +97,7 @@ def country_year_active(request): #??
     countries = Country.objects.all().order_by("name")
     
     y2c2o = {}
-    years = [str(x) for x in range(1981, 2008)]
+    years = [str(x) for x in range(1981, 20014)] # was 2008 before
     for y in years:
         d = {}
         for c in countries:
@@ -104,7 +108,7 @@ def country_year_active(request): #??
     for o in ops:
         y2c2o[o.year][o.group.country.name] = 1
 
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=country_year_active.csv'
 
     # header
@@ -264,7 +268,7 @@ def year_country_active_pgags(request): #??
         y = o.year
         data[(c, y)].add(o.group)
     
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=year-country-active-pgags.csv'
 
     # header
@@ -301,7 +305,7 @@ def year_country_incidents(request): #??
         y = o.year
         data[(c, y)] = data[(c, y)] + int(o.incidents)
     
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=year-country-incidents.csv'
 
     # header

@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.welcome, name="welcome"),
     path('datasets/', views.datasets, name="datasets"),
     path('datasets/year_active/', views.year_active, name="year_active"),
+    path('datasets/country_year_active/', views.country_year_active, name="country_year_active"),
     path('datasets/pgag_basic/', views.pgag_basic, name="pgag_basic"),
     path('imprint/', views.imprint, name="imprint"),
     path('privacy/', views.privacy, name="privacy"),
