@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css"  href="{% static 'dataentry/styling.css' %}"/>
+	<title>{% block title %}Page title{% endblock %}</title>
+	{% comment %}
+	<meta NAME="ROBOTS" CONTENT="noindex,nofollow"> 
+	{% endcomment %}
+</head>
+
+<body class="light blue smaller freestyle01">
+<div id="layout">
+ 
+	<div class="row smaller">
+		<div class="col c5 smaller">
+			<h1><!--<a
+		href="http://www.sowi.uni-mannheim.de/militias/"
+		target="_blank">-->Pro-Government Militias (LOKAL)<!--</a>--></h1>
+		</div>
+		
+		<div class="col c7 aligncenter">
+			<p class="slogan"></p>
+		</div>
+	</div>
+  
+	<div class="row">
+		<div class="col c12 aligncenter">
+			<img src="{% static 'dataentry/militia-header.jpg' %}" alt="Pro-Government Militia Website" width="960" height="240" />
+		</div>
+	</div>
+ 
+
+	
+		<div class="row">
+		  	<div class="col c2 alignleft">
+			<ul class="menu">
+			  {% block sidebar %}
+			  <li><a href="/">Home</a></li>
+			  <li><a href="/country/">Countries</a></li>
+			  <li><a
+			  href="/pgag/">Pro-Government Militias</a></li>
+			  <ul class="subpages">
+			    <li><a href="/type/">Government-Relation</a></li>
+			    <li><a href="/link/">Government-Link</a></li>
+			    <li><a href="/support/">Material Support</a></li>
+			    <li><a href="/member/">Membership</a></li>
+			    <li> <a href="/target/">Targets</a></li>
+			    <li><a href="/purpose/">Purpose</a></li>
+			    <!--<li><a
+			    href="/militias-db/data/ethnic/">Ethnic Characteristics</a></li>				  
+			    <li><a
+			    href="/militias-db/data/termtype/">Termination
+			    Type</a></li>-->
+			  </ul>
+			  <br>
+			  <li><a href="/datasets/">Datasets</a></li>
+			  <li><a
+				href="http://www.sowi.uni-mannheim.de/militias/?page_id=21" target="_blank">About
+				Us</a></li>
+			  <li><a href="http://www.sowi.uni-mannheim.de/lspol4/" target="_blank">Contact</a></li>	
+			  <li><a href="/imprint/">Imprint</a></li>
+			  <!--<li><a href="/admin/">Admin</a></li>-->
+			</ul>
+			{% endblock %}
+			</div>
+
+
+
+
+		
+		<div class="col c8">
+		  <h2> {% block main_heading %}Main Heading{%endblock %} </h2>
+		  {% block content %}
+		  <p>
+		  Content
+		  </p>
+		  {% endblock %}
+		</div>
+ 
+		
+	<div id="footer" class="row">
+		<div class="col c12 aligncenter">
+			<h3>&copy; 2014 Sabine Carey and Neil Mitchell</h3>
+			<p><a
+		href="http://andreasviklund.com/templates/origo/">Template
+		design</a> adapted from <a href="http://andreasviklund.com/">Andreas Viklund</a><br />
+
+		</div>
+	</div>
+ </div>
+</body>
+</html>

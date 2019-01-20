@@ -1,0 +1,28 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %} Group Purposes: {% endblock %}
+{% block main_heading %} Groups Purposes: {% endblock %}
+
+{% block content %}
+
+<p>
+Select a purpose from the list below
+</p>
+<table>
+  {% for p in purpose %}
+  <tr>
+    <td><a href="/purpose/{{ p.id }}/">{{ p.name }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+We record the purpose of the PGM. Multiple categories are possible. As
+the range of purposes was unknown prior to the search, coders could
+add categories of purpose as they found them. Examples of purpose
+include the protection of state institutions, protection of the
+leader, protection of national borders and integrity or self-defence
+and security.
+</p>
+{% endblock %}

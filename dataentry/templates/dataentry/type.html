@@ -1,0 +1,39 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %}Type of Relationship to the Government{% endblock %}
+{% block main_heading %}Type of Relationship to the Government{% endblock %}
+
+{% block content %}
+Select the type of PGM relationship to the government.
+</br>
+</br>
+<table>
+  {% for rel in rels %}
+  <tr>
+    <td><a href="/type/{{ rel.0 }}/">{{ rel.1 }}</a></td>
+  </tr>			 
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+This variable describes the relationship that the PGM has with the government. While all groups in the database are pro-government, they vary with respect to the degree of formality of the link.  In some instances the government tries to keep the group at arm’s length, while in other cases governments openly include these groups in legislation, reports and official documents. As an effort to capture this type of proximity to the government we use two categories, informal and semi-official PGMs. The main distinction between these two groups is how formally acknowledged the link is between the government and the PGM.
+</br>
+</br>
+<b>Informal PGMs </b> are described as pro-government, government militia, linked to the government, government-backed, or government-allied. They may be armed or trained by the government. The key difference between informal and semi-official PGMs is that the link to informal PGMs is not officially or formally acknowledged. ‘Death squads’, even when closely linked to the government, are normally informal and clandestine, and are categorized as informal PGMs. Examples include the Janjaweed in Sudan, the Young Patriots in Cote d’Ivoire, the Ansar-e Hezbollah in Iran and the Interahamwe Militia in Rwanda during the early 1990s.
+
+</br>
+</br>
+<b>Semi-official PGMs </b> have a formally and/or legally acknowledged status, in contrast to the looser affiliation of informal PGMs. A semi-official PGM might be sub-ordinate to the regular security forces, but is separate from the regular police and security forces. As such, the link between the PGM and the government is more formal and institutionalized, for example by being recognized and acknowledged in official and legal documents of the state. But the group is identified as a distinct organisation from the regular security forces as with Village Defence Committees in India. 
+</br>
+</br>
+<u>Paramilitary</u> does not enter the PGM dataset when the term paramilitary is used to refer to regular forces, i.e. police units with military status, as in the case of the French gendarmes or Italian carabinieri.
+
+
+
+</p>
+
+
+
+
+{% endblock %}

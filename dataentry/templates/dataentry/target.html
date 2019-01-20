@@ -1,0 +1,28 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %}Targets{% endblock %}
+{% block main_heading %}Targets{% endblock %}
+
+{% block content %}
+
+<p>
+Select a target type from the list below. 
+</p>
+<table>
+  {% for targ in targets %}
+  <tr>
+    <td><a href="/target/{{ targ.id }}/">{{ targ.type }}</a></td>
+  </tr>			 
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+This field records the group that is alleged to be targeted by the
+PGM. Multiple targets are possible. As the range of alleged targets
+was unknown prior to the search, coders could add categories of target
+as they found them. The list of possible targets is wide-ranging. It
+includes, for example, ethnic groups, civilians, unarmed political
+opposition and armed opposition groups.
+</p>
+{% endblock %}

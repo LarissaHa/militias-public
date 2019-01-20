@@ -1,0 +1,27 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %}Membership Characteristics{% endblock %}
+{% block main_heading %}Membership Characteristics{% endblock %}
+
+{% block content %}
+
+<p>
+Select a characteristic of PGM members from the list below. 
+</p>
+<table>
+  {% for m in mc %}
+  <tr>
+    <td><a href="/member/{{ m.id }}/">{{ m.name }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+This field records the main characteristics of PGM members. Multiple
+categories are possible. As the range of members was unknown prior to
+the search, coders could add categories of members as they found them.
+Examples of membership include ethnicity, religion, ideology,
+children, security forces and urban.
+</p>
+{% endblock %}

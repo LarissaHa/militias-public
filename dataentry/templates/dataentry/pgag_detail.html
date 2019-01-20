@@ -1,0 +1,168 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %}Pro-Government Militia{% endblock %}
+{% block main_heading %}{{ pgag.name }} ({{ pgag.country.name}}) {% endblock %}
+
+{% block content %}
+
+<table cellspacing="15">
+<tr>
+    <td><b>Name assigned by coder:</b></td>
+    <td>{% if pgag.madeup %}
+    yes
+    {% else %}
+    no
+    {% endif %}
+    </td>
+  </tr>
+ <tr>
+ <td><b>PGM ID Number:</b></td>
+    <td>{{pgag.id}}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Country:</b></td>
+    <td><a href="/country/{{ pgag.country.id }}">{{ pgag.country.name }}</a></td>
+  </tr>
+  <tr>
+    <td><b>Date formed:</b></td>
+    <td>{{ pgag.date_formed|default_if_none:"Unknown" }}</td>
+  </tr>
+   <tr>
+    <td><b>Details of Formation:</b></td>
+    <td>{{ pgag.origin }}</td>
+  </tr>
+  <tr>
+    <td><b>Date dissolved:</b></td>
+    <td>{{ pgag.date_dissolved|default_if_none:"Unknown" }}</td>
+  </tr>
+   <tr>
+    <td><b>Details of Termination:</b></td>
+    <td>{{ pgag.termination }}</td>
+  </tr>
+  <tr>
+    <td><b>Successor group(s):</b></td>
+    <td>
+      {% if pgag.successor_group.all %}
+      {% for sg in pgag.successor_group.all %}
+      {% if forloop.counter0 %}, {% else %}{% endif %}
+      <a href="/pgag/{{ sg.id }}/">{{ sg.name }}</a>
+      {% endfor %}
+      {% else %}
+      none
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Private Military Company?</b></td>
+    <td>{{ pgag.pmc }}</td>
+  </tr>
+  <tr>
+    <td><b>Government Relation:</b></td>
+    <td><a href="/type/{{ pgag.government_relation }}/">{{ pname }}</a></td>
+  </tr>
+  <tr>
+    <td><b>Government Link(s):</b></td>
+       <td>
+      {% if pgag.government_link.all %}
+      {% for sg in pgag.government_link.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/link/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+      {% else %}
+      none
+      {% endif %}
+    </td>
+    <!-- <td>{{ pgag.government_link.all|join:", " }}</td> -->
+  </tr>
+
+  </tr>
+  <tr>
+    <td><b>Training and Equipment</b></td>
+    <td>{% ifequal pgag.government_trained 'noinf' %}no information{% else %}
+    {{ pgag.government_trained }}{% endifequal %}</td>
+  </tr>
+  <tr>
+    <td><b>Shared Information and Joint Operations</b></td>
+    <td>{% ifequal pgag.information_shared 'noinf' %}no information{% else %}
+    {{ pgag.information_shared }}{% endifequal %}</td>
+  </tr>
+  <tr>
+    <td><b>Shared personnel</b></td>
+    <td>{% ifequal pgag.personnel_shared 'noinf' %}no information{% else %}
+    {{ pgag.personnel_shared }}{% endifequal %}</td>
+  </tr>
+  <tr>
+    <td><b>Types of Material Support:</b></td>
+        <td>
+      {% if pgag.support_types.all %}
+      {% for sg in pgag.support_types.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/support/{{ sg.id }}/">{{ sg.type }}</a>{% endfor %}
+      {% else %}
+      none
+      {% endif %}
+    </td>
+    <!-- <td>{{ pgag.support_types.all|join:", " }}</td> -->
+  </tr>
+  <tr>
+    <td><b>State Sponsor(s):</b></td>
+    <td>
+      {% if pgag.supporters.all %}
+      {% for sg in pgag.supporters.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/country/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+      {% else %}
+      none
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Other Connection(s):</b></td>
+    <td>{{ pgag.other_connection }}</td>
+  </tr>
+  <tr>
+    <td><b>Membership:</b></td>
+    <td>
+      {% if pgag.membership.all %}
+      {% for sg in pgag.membership.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/member/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+      {% else %}
+      Unknown
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Location:</b></td>
+    <td>{{ pgag.location }}</td>
+  </tr>
+  <tr>
+    <td><b>Force Strength:</b></td>
+    <td>[{{ pgag.headcount_low|default_if_none:"unknown" }},
+      {{ pgag.headcount_high|default_if_none:"unknown" }}]</td>
+  </tr>
+  <tr>
+    <td><b>Target(s):</b></td>
+    <td>
+      {% if pgag.target.all %}
+      {% for sg in pgag.target.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/target/{{ sg.id }}/">{{ sg.type }}</a>{% endfor %}
+      {% else %}
+      None
+      {% endif %}
+    </td>
+  <tr>
+    <td><b>Purpose(s):</b></td>
+        <td>
+      {% if pgag.purpose.all %}
+      {% for sg in pgag.purpose.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/purpose/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+      {% else %}
+      None
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Other Information:</b></td>
+    <td>{{ pgag.other|default_if_none:"none"}}</td>
+  </tr>
+</table>
+<!-- <p><br/></p> -->
+
+<h2>Evidence</h2>
+<ul>
+<li>Examine the <a href="/pgag/{{ pgag.id }}/evidence/">evidence</a> for this coding.</li>
+
+</ul>
+
+{% endblock %}

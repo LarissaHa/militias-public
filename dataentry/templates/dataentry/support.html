@@ -1,0 +1,28 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %} Types of Material Support {% endblock %}
+{% block main_heading %} Types of Material Support {% endblock %}
+
+{% block content %}
+
+<p>
+Select a type of material support from the list below.
+</p>
+<table>
+  {% for s in supports %}
+  <tr>
+    <td><a href="/support/{{ s.id }}/">{{ s.type }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+We record the sources of material support that the PGM has
+received. Multiple sources of material support are possible. As the
+range of sources was unknown prior to the search, coders could add
+categories of support as they found them.  We record a wide range of
+sources of finance, payment, supply or maintenance, including among
+others corporations, landowners and foreign governments.
+</p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "dataentry/newbase.html" %}
+
+{% block title %}Type of Link to the Government{% endblock %}
+{% block main_heading %}Type of Link to the Government{% endblock %}
+
+{% block content %}
+
+<p>
+Select the type of Link to the government. 
+</p>
+<table>
+  {% for li in lin %}
+  <tr>
+    <td><a href="/link/{{ li.id }}/">{{ li.name }}</a></td>
+  </tr>			 
+  {% endfor %}
+</table>
+</br>
+</br>
+<p align="justify">
+This variable specifies the nature of the link between the PGM and the
+government authority. A PGM can have multiple links to government. We
+identify four possible links:
+</br>
+</br>
+<em>Person/Minister</em>
+</br>
+The PGM is linked directly to a specific person, such as the president
+or a minister. For example, this might be the case if a PGM was
+created directly by the president.
+</br>
+</br>
+<em>Political party</em>
+</br>
+The PGM is linked to a political party.
+</br>
+</br>
+<em>State/Military institution</em>
+</br>
+The PGM is linked to an institution of the state, including the
+military.
+</br>
+</br>
+<em>Sub-national government</em>
+</br>
+The PGM is linked to a sub-national government, such as a state in a federal system. 
+</p>
+{% endblock %}
