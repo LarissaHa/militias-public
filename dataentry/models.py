@@ -166,7 +166,7 @@ class PGAG(models.Model):
     
     # predecessor_group = models.ManyToManyField("self", symmetrical=False, blank=True, null=True)
     
-    successor_group = models.ManyToManyField("self",symmetrical=False, related_name='successors', blank=True, null=True)
+    successor_group = models.ManyToManyField("self",symmetrical=False, related_name='successors', blank=True)
     # Problem: many to many field relates things symetrical, i.e. changes in both PGMs ("if I am your successor, you are mine")
     # symmetrical = False prevents from doing this
     # Source symmetrical: https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ManyToManyField.symmetrical
@@ -224,8 +224,7 @@ class PGAG(models.Model):
     #                         blank=True)
         
     target = models.ManyToManyField(Target,
-                    blank=True,
-                    null=True)
+                    blank=True)
     
     # party_id = models.CharField("Name of Party Link",
     #                 max_length=100,
@@ -255,8 +254,7 @@ class PGAG(models.Model):
     supporters = models.ManyToManyField(Country,
                         verbose_name="State sponsors",
                         related_name='sponsors',
-                        blank=True,
-                        null=True)
+                        blank=True)
     other_connection = models.CharField("Other connection", 
                         max_length=400,
                         blank=True)

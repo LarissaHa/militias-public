@@ -338,7 +338,7 @@ def country(request):
 
     ctglist = []
     for c in countries:
-        ctglist.append([c])
+        ctglist.append([c, ctg[c]])
 
     return render(request, 'dataentry/countries.html', {'ctglist': ctglist}) 
     #return render(request, 'dataentry/countries.html')
