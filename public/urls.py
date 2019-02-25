@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', include('dataentry.urls')),
-    path('data/', include('dataentry.urls')),
-    path('admin/', admin.site.urls),
+    path('militias-public/', include('dataentry.urls')),
+    path('militias-public/data/', include('dataentry.urls')),
+    path('militias-public/admin/', admin.site.urls),
 ]
