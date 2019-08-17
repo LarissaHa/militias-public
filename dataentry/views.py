@@ -65,7 +65,7 @@ def year_active(request): #??
     # if not request.user.is_authenticated():
     #     return render_to_response('login_error.html')
 
-    years = range(1981, 2014) # was 2008 before
+    years = range(1981, 2019) # was 2008 before
     data = {}
     for y in years:
         data[str(y)] = 0
@@ -97,7 +97,7 @@ def country_year_active(request): #??
     countries = Country.objects.all().order_by("name")
     
     y2c2o = {}
-    years = [str(x) for x in range(1981, 20014)] # was 2008 before
+    years = [str(x) for x in range(1981, 2019)] # was 2008 before
     for y in years:
         d = {}
         for c in countries:
@@ -256,7 +256,7 @@ def year_country_active_pgags(request): #??
     #     return render_to_response('login_error.html')
 
     countries = Country.objects.all().order_by("name")
-    years = range(1981, 2008)
+    years = range(1981, 2019) # was 2008 before
     data = {}
     for c in countries:
         for y in years:
@@ -293,7 +293,7 @@ def year_country_incidents(request): #??
     #     return render_to_response('login_error.html')
 
     countries = Country.objects.all().order_by("name")
-    years = range(1981, 2008)
+    years = range(1981, 2019) # was 2008 before
     data = {}
     for c in countries:
         for y in years:
@@ -349,7 +349,7 @@ def new_country_detail(request, country_id): #??
 
     c = get_object_or_404(Country, pk=country_id)
     groups = PGAG.objects.filter(country=country_id).order_by("name")
-    years = range(1981, 2008)
+    years = range(1981, 2019) # was 2008 before
     years2activegroups = {}
     for y in years:
         years2activegroups[str(y)] = set()

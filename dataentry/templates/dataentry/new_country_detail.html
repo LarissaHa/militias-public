@@ -8,11 +8,11 @@
 {% if groups %}
 
 <p>The following groups have been reported as active in 
-{{ country.name }}: between 1981 and 2007 </p>
+{{ country.name }}: between 1981 and 2019 </p>
 
 
 <p>
-
+<div class="col c10" style="width: 700px; overflow: scroll">
 <table>
   {% for line in data %}
   {% if forloop.first %}
@@ -42,6 +42,7 @@
   {% endfor %}
 </table>
 </p>
+</div>
 
 <h3>Key</h3>
 <p>Blue squares indicate that the group was active in that year. Each blue square is supported by at least one piece of evidence in the PGMD. Grey squares indicate the time between the formation and termination of the group when no activity was recorded. Where the termination date is unknown, the group is shaded grey until the end of the period. Select the group names for more detail.</p>
@@ -56,7 +57,7 @@
     {% ifequal country.name "Lebanon" %}
     <p> Due to difficulties identifying a government during this time period, this country was excluded from coding. </p>
     {% else %}
-    <p>No groups are reported active between 1981 and 2007.</p>
+    <p>No groups are reported active between 1981 and 2019.</p>
   {% endifequal %}
   {% endifequal %}
   
